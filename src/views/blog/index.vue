@@ -27,7 +27,6 @@
 </template>
 
 <script>
-import {getBlogList} from "@/api/blog";
 import Markdown from 'vue3-markdown-it';
 
 export default {
@@ -48,7 +47,28 @@ export default {
     }
   },
   mounted() {
-    this.blogList = getBlogList()
+    const modulesFiles =  require.context('@/blogs', true,  /\.md$/);
+    modulesFiles.keys().forEach((module_item) => {
+      //console.log(module_item)
+      //console.log(modulesFiles(module_item).default);
+      var info_end = modulesFiles(module_item).default.lastIndexOf("---");
+      var infos = modulesFiles(module_item).default.substring(0,info_end).split("\n");
+      var content = modulesFiles(module_item).default.substring(info_end+3)
+      var title = "";
+      for(var i in infos) {
+        var info = infos[i];
+        var pos = info.indexOf(':');
+        var type = info.substring(0,pos);
+
+        var str = info.substring(pos+1);
+        if(type==="title") {
+          console.log(str)
+          title = str;
+        }
+      }
+      this.blogList.push({"name":module_item,"title":title,"content":content})
+    });
+
     //console.log(this.blogList)
   }
 }

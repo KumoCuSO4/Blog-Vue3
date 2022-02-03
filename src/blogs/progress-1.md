@@ -129,14 +129,15 @@ vue-cil3.0+的版本中加入了一个可视化的管理工具，提供了很多
 
 	npm uninstall vue-cli -g
 	npm install @vue/cli -g
+
 工具启动，默认使用的是本地的8000端口，若端口被占用则会开启在其他端口，程序会自动打开浏览器进入，大致页面：
 
-![](./progress-1.assets/2.png)
+{% asset_img 2.png %}
 
 仪表盘界面可以自定义，能添加任务的快捷启动；插件界面和依赖界面能对插件、依赖进行管理和添加。配置界面可以管理一些基本设置；任务界面能执行vue-cli-service的任务以及package.json中定义的任务。
 
 vue ui对我来说非常不错的地方在于这里可以看到很多的分析数据，非常方便，有一个直接明了的ui让人神清气爽。
 
-![](./progress-1.assets/3.png)
+{% asset_img 3.png %}
 
-![](./progress-1.assets/4.png)
+{% asset_img 4.png %}
