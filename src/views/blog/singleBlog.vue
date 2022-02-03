@@ -7,9 +7,8 @@
 </template>
 <script>
 
-import {getBlog} from "@/api/blog";
 import Markdown from 'vue3-markdown-it';
-
+import {getBlog} from "@/api/blog";
 
 export default {
   name: "singleBlog",
@@ -23,7 +22,7 @@ export default {
     }
   },
   mounted() {
-    this.blog = getBlog(this.blogName)
+    this.blog = getBlog(this.blogName);
   }
 }
 </script>

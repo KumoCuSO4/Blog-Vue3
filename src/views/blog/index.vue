@@ -6,7 +6,7 @@
 
     <el-col class="blogListCenter" :xs="18" :sm="18" :md="16" :lg="16" :xl="16">
       <div v-for="blog in blogList" :key="blog.name">
-        <router-link :to="'/blog/view/'+blog.name">
+        <router-link class="blogLink" :to="'/blog/view/'+blog.name">
           <h1>
             {{blog.title}}
           </h1>
@@ -28,6 +28,7 @@
 
 <script>
 import Markdown from 'vue3-markdown-it';
+import {getBlogList} from "@/api/blog";
 
 export default {
   name: "blog",
@@ -47,27 +48,7 @@ export default {
     }
   },
   mounted() {
-    const modulesFiles =  require.context('@/blogs', true,  /\.md$/);
-    modulesFiles.keys().forEach((module_item) => {
-      //console.log(module_item)
-      //console.log(modulesFiles(module_item).default);
-      var info_end = modulesFiles(module_item).default.lastIndexOf("---");
-      var infos = modulesFiles(module_item).default.substring(0,info_end).split("\n");
-      var content = modulesFiles(module_item).default.substring(info_end+3)
-      var title = "";
-      for(var i in infos) {
-        var info = infos[i];
-        var pos = info.indexOf(':');
-        var type = info.substring(0,pos);
-
-        var str = info.substring(pos+1);
-        if(type==="title") {
-          console.log(str)
-          title = str;
-        }
-      }
-      this.blogList.push({"name":module_item,"title":title,"content":content})
-    });
+    this.blogList = getBlogList();
 
     //console.log(this.blogList)
   }
@@ -85,5 +66,19 @@ export default {
   padding-left: 30px;
   padding-right: 30px;
   padding-bottom: 20px;
+}
+.blogLink:link{
+  color: rgb(33, 81, 208);
+  text-decoration: none;
+}
+.blogLink:visited {
+  color: rgb(33, 81, 208);
+  text-decoration: none;
+}
+.blogLink:hover {
+  color: hotpink;
+}
+.blogLink:active {
+  color: blue;
 }
 </style>
