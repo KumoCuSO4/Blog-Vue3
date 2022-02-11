@@ -1,6 +1,6 @@
 <template>
-  <div>
-    Hello world
+  <div class="mainPart">
+    <h1 class="websiteTitle">KumoCuSO4's Website</h1>
     <router-link :to="{name: '博客'}">
       前往博客
     </router-link>
@@ -14,5 +14,10 @@ name: "index"
 </script>
 
 <style scoped>
-
+.mainPart{
+  text-align: center;
+}
+.websiteTitle{
+  font-size: 60px;
+}
 </style>

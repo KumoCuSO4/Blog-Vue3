@@ -1,6 +1,8 @@
 <template>
   <div>
-    这是主界面
+    <header class="mainHeader">
+
+    </header>
     <index/>
   </div>
 </template>
@@ -14,5 +16,9 @@ name: "mainLayout",
 </script>
 
 <style scoped>
-
+.mainHeader{
+  width: auto;
+  height: 60px;
+  background-color: black;
+}
 </style>

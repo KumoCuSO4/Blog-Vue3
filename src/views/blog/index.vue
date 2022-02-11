@@ -49,8 +49,6 @@ export default {
   },
   mounted() {
     this.blogList = getBlogList();
-
-    //console.log(this.blogList)
   }
 }
 </script>
